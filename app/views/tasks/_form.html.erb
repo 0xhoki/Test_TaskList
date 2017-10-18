@@ -1,0 +1,31 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="text" class="form-control" id="task_name" name=task[name] placeholder="Enter Task Name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Status</label>
+    <select class="form-control" id="task_status" name=task[status] type="text">
+       <option key="new" value="new">new</option>
+       <option key="in progress" value="in progress">in progress</option>
+       <option key="done" value="done">done</option>
+    </select>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
